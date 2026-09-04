@@ -1,0 +1,39 @@
+Analyse:
+
+
+	Boucle du programme{
+		boucle while qui permet que le programme fonctionne en continu
+		Affiche le menu avec la classe parking
+		attend un chiffre pour continuer et va vers la fonction indiquée:
+			Entrée d'une voiture --> 1 --> Paking.EntreeVoiture
+			Sortie d'une voiture --> 2 --> Paking.SortieVoiture
+			Afficher l'état du parking --> 3 --> Paking.ShowStatus
+			Chercher --> 4 --> Paking.Search
+			Statistique du jour --> 5 --> Paking.DayStat
+			Historique --> 6 --> Paking.Historique
+			Exit --> 0 --> Paking.Exit
+	}
+	
+	Methode dans la classe Parking{
+		Paking.EntreeVoiture: 	Stocke la plaque dans un tableau (si c'est la place 8 ca correcpondera a la cellule 7 du tableau) ainsi que le ticket
+		Paking.SortieVoiture: 	Supprime la plaque du tableau (si pas de plaque = place vide) et stocke dans une variable pour l'historique
+		Paking.ShowStatus: 		Affiche chaque place et leur etat (libre / occupé) grâce au tableau(si il y a une plaque = occupé)
+		Paking.Search: 			Permet de chercher une voiture ou une place dans le parking
+		Paking.DayStat: 		Permet de montrer les voitures qui sont arrivées, sorties et acctuelement parquées (variables avec lesquelles on fait +1 pour entrée, sortie et acctuel)
+		Paking.Historique: 		Permet d'afficher l'historique du jour (variable avec laquelle on fera +=)
+		Paking.Exit: 	 		Arrete le programme avec Environment.Exit(0);
+	}
+	
+	Methode dans la classe Voiture{
+	
+		Voiture.Plaque: 	Entre un numéro de plaque et stocke
+		Voiture.Place: 		Attribue une place de parking a la voiture et stocke
+	
+	}
+	
+	Methode dans la classe Ticket{
+	
+		Ticket.HeureEntree: 	stocke l'heure d'entree
+		Ticket.Place: 			stocke la place de la voiture
+	
+	}
