@@ -17,15 +17,7 @@ namespace P_320_Parking
 
             while (loop)
             {
-
                 parking.Menu();
-
-                
-
-                
-
-                
-
             }
             
             Console.ReadLine();
