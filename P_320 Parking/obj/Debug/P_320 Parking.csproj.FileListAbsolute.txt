@@ -6,3 +6,11 @@ D:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.cs
 D:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.exe
 D:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.pdb
 D:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.exe.config
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\bin\Debug\P_320 Parking.exe.config
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\bin\Debug\P_320 Parking.exe
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\bin\Debug\P_320 Parking.pdb
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.csproj.AssemblyReference.cache
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.exe.config
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.csproj.CoreCompileInputs.cache
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.exe
+T:\ETML\I320 - POO\GitHub\P_320-Parking\P_320 Parking\obj\Debug\P_320 Parking.pdb

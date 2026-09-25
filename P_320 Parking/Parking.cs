@@ -23,6 +23,8 @@ namespace P_320_Parking
         bool chiffreOk = false;
         bool plaqueOk = false;
         bool placeOk = false;
+        bool isPlaceNbr;
+        int choixPlaceSortie;
         public Voiture[] places { get; set; }
 
         private string _choix;
@@ -94,6 +96,8 @@ namespace P_320_Parking
         public void EntreeVoiture()
         {
 
+            Console.Write("--- Entree d'un vehicule ---");
+
             plaqueOk = false ;
             lettreOk = false ;
             chiffreOk = false ;
@@ -146,8 +150,17 @@ namespace P_320_Parking
                     }
                     else if (isAllNbr)
                     {
-                        matricule += matriculeNbrTest;
-                        chiffreOk = true;
+
+                        if (matriculeNbrTest.Length <= 6)
+                        {
+                            matricule += matriculeNbrTest;
+                            chiffreOk = true;
+                        }
+                        else
+                        {
+                            Console.Write("Plaque invalide, la partie des chiffres est trop longue\n\n");
+                        }
+
                     }
                     else if (!isAllNbr)
                     {
@@ -157,55 +170,114 @@ namespace P_320_Parking
 
                 }
 
-
-
-                //Check de la longueure de la plaque
-                checkLenght = matricule.Length;
-
-                if (checkLenght > 9 || checkLenght <= 3)
-                {
-                    Console.WriteLine("Plaque invalide");
-                    chiffreOk = false;
-                    lettreOk = false;
-                }
-                else
-                {
-
-                    Console.WriteLine($"\nVotre matricule est {matricule}.\n\n");
-                    plaqueOk = true;
-                }
+                Console.WriteLine($"\nVotre matricule est {matricule}.\n\n");
+                plaqueOk = true;
+                
             }
 
             while (!placeOk)
             {
 
 
-                Console.Write("Veillez choisir la place: ");
-                choixPlace = int.Parse(Console.ReadLine());
+                Console.Write("Veillez choisir la place (de 0 a 19): ");
+                isPlaceNbr = int.TryParse(Console.ReadLine(), out choixPlace);
 
-                if (places[choixPlace] == null)
+                if (!isPlaceNbr)
                 {
-                    places[choixPlace] = new Voiture(matricule, choixPlace);
+                    Console.Write("Veuillez entrer un NOMBRE entre 0 a 19\n\n");
+                }
+                else if (choixPlace > 19)
+                {
+                    Console.Write("Veuillez entrer un nombre ENTRE 0 a 19\n\n");
 
-                    placeOcc++;
-                    placeOk = true;
                 }
                 else
                 {
-                    Console.Write("La place est deja occupee, veuillez en choisir une autre.\n\n");
-                } 
+                    if (places[choixPlace] == null)
+                    {
+                        places[choixPlace] = new Voiture(matricule, choixPlace);
+
+                        placeOcc++;
+                        placeOk = true;
+                    }
+                    else
+                    {
+                        Console.Write("La place est deja occupee, veuillez en choisir une autre.\n\n");
+                    }
+                }
             }         
 
         }
 
         public void SortieVoiture()
         {
+            Console.Write("--- Sortie d'un vehicule ---\n\n");
+            Console.Write("Veuillez choisir une methode de sortie:\n\n1: sortie avec le numero de la place\n2: sortie avec la plaque\nVotre choix: ");
 
+            string methodeDeSortie = Console.ReadLine();
+            if (methodeDeSortie == "1")
+            {
+
+                Console.Write("Veullez choisir une place pour faire sortir votre vehicule: ");
+                choixPlaceSortie = int.Parse(Console.ReadLine());
+
+                places[choixPlaceSortie] = null;
+
+            }
+            else if(methodeDeSortie == "2")
+            {
+                //sortie avec la plaque
+            }
+            else
+            {
+                Console.Write("Veuillez choisir soit 1, soit 2 et pas autre chose");
+            }
         }
 
         public void ShowStatus()
         {
             Console.Write($"--- ÉTAT DU PARKING --- \nPlaces Totales: {placeTot} \nPlaces occupée: {placeOcc} \nPlace libres: {placeTot - placeOcc} \nTaux d'occupation: {100 * placeOcc / placeTot}% \n\n");
+
+            int i = 0;
+            string status;
+            foreach( Voiture voiture in places)
+            {
+
+                if (places[i] == null)
+                {
+                    status = " ";
+                }
+                else
+                {
+                    status = "X";
+                }
+
+
+                if(i == 0)
+                {
+                    Console.Write($"|| 0{i}: {status} |");
+                }
+                else if(i == 19)
+                {
+                    Console.Write($"| {i}: {status} ||\n\n");
+                }
+                else if(i < 10)
+                {
+                    Console.Write($"| 0{i}: {status} |");
+                }
+                else
+                {
+                    Console.Write($"| {i}: {status} |");
+                }
+                    i++;
+
+                if(i%4 == 0 && i != 0 && i != 20)
+                {
+                    Console.Write("|\n|");
+                }
+
+            }
+
         }
 
         public void Search()
