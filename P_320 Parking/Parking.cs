@@ -31,7 +31,9 @@ namespace P_320_Parking
         bool isOut = false;
         string noPlaceLibre;
         bool existe = false;
+        string answerSearch;
         string searchPlaque;
+        string searchChoixPlace;
         public Voiture[] places { get; set; }
 
         private string _choix;
@@ -123,11 +125,13 @@ namespace P_320_Parking
 
                     matricule = matricule.ToUpper();
 
+                    bool isAllLettre = int.TryParse(matricule, out int lettre);
+
                     matriculeLettreTest = matricule.Length;
 
-                    if (matriculeLettreTest != 2)
+                    if (matriculeLettreTest != 2 && isAllLettre)
                     {
-                        Console.WriteLine("Plaque invalide, le canton ne fait pas la bonne longueure (ex: VD)");
+                        Console.WriteLine("Plaque invalide");
 
                     }
                     else
@@ -321,7 +325,7 @@ namespace P_320_Parking
         public void Search()
         {
             Console.Write("Veuillez entrer 1 pour chercher avec le N° de la place et 2 pour rechercher avec la plaque: ");
-            string answerSearch = Console.ReadLine();
+            answerSearch = Console.ReadLine();
 
             if (answerSearch == "1")
             {
@@ -334,14 +338,15 @@ namespace P_320_Parking
                 }
                 else
                 {
-                    string test = places[searchPlace].plaque;
                     Console.Write($"Place N° {searchPlace}\n");
-                    Console.Write($"Plaque: {test}\n\n");
+
+                    searchChoixPlace = places[searchPlace].plaque;
+                    Console.Write($"Plaque: {searchChoixPlace}\n\n");
                 }
             }
             else if (answerSearch == "2")
             {
-                Console.Write("Veuillez entrer la plaque pour la voiture que vous voulez rechercher: ");
+                Console.Write("Veuillez entrer la plaque pour la voiture que vous voulez rechercher (format: LL-CCCCCC, écrire en majuscule): ");
                 searchPlaque = Console.ReadLine();
 
                 foreach (Voiture matricule in places)

@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|solutionrelative:parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|d:\\etml\\i320 - poo\\github\\p_320-parking\\p_320 parking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -76,9 +76,9 @@
               "Title": "Parking.cs",
               "DocumentMoniker": "D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\Parking.cs",
               "RelativeDocumentMoniker": "Parking.cs",
-              "ToolTip": "D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\Parking.cs*",
-              "RelativeToolTip": "Parking.cs*",
-              "ViewState": "AgIAADwBAAAAAAAAAAAAAEIBAAB3AAAAAAAAAA==",
+              "ToolTip": "D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\Parking.cs",
+              "RelativeToolTip": "Parking.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAwwPEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-02T07:23:05.61Z",
               "EditorCaption": ""
