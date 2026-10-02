@@ -8,7 +8,7 @@ namespace P_320_Parking
 {
     internal class Voiture
     {
-        int noPlace;
+        public int noPlace;
         public string plaque;
 
         public Voiture(string plaque, int noPlace)

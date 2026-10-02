@@ -27,6 +27,7 @@ namespace P_320_Parking
         int choixPlaceSortie;
         string choixPlaque;
         bool isOut = false;
+        string noPlaceLibre;
         public Voiture[] places { get; set; }
 
         private string _choix;
@@ -176,10 +177,20 @@ namespace P_320_Parking
                 plaqueOk = true;
                 
             }
+                for (int i = 0; i < places.Length; i++)
+                {
+                    if (places[i] == null)
+                    {
+                        noPlaceLibre += $"{i}  ";
+                    }
+                }
 
             while (!placeOk)
             {
 
+
+
+                Console.WriteLine($"Les places libres sont les suivantes : {noPlaceLibre}");
 
                 Console.Write("Veillez choisir la place (de 0 a 19): ");
                 isPlaceNbr = int.TryParse(Console.ReadLine(), out choixPlace);
@@ -253,7 +264,7 @@ namespace P_320_Parking
             }
             else
             {
-                Console.Write("Veuillez choisir soit 1, soit 2 et pas autre chose");
+                Console.Write("Veuillez choisir soit 1, soit 2 et pas autre chose\n\n");
             }
         }
 
