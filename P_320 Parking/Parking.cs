@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
@@ -28,6 +30,8 @@ namespace P_320_Parking
         string choixPlaque;
         bool isOut = false;
         string noPlaceLibre;
+        bool existe = false;
+        string searchPlaque;
         public Voiture[] places { get; set; }
 
         private string _choix;
@@ -177,6 +181,7 @@ namespace P_320_Parking
                 plaqueOk = true;
                 
             }
+
                 for (int i = 0; i < places.Length; i++)
                 {
                     if (places[i] == null)
@@ -187,8 +192,6 @@ namespace P_320_Parking
 
             while (!placeOk)
             {
-
-
 
                 Console.WriteLine($"Les places libres sont les suivantes : {noPlaceLibre}");
 
@@ -224,6 +227,7 @@ namespace P_320_Parking
 
         public void SortieVoiture()
         {
+            isOut = false;
             Console.Write("--- Sortie d'un vehicule ---\n\n");
             Console.Write("Veuillez choisir une methode de sortie:\n\n1: sortie avec le numero de la place\n2: sortie avec la plaque\nVotre choix: ");
 
@@ -316,7 +320,46 @@ namespace P_320_Parking
 
         public void Search()
         {
+            Console.Write("Veuillez entrer 1 pour chercher avec le N° de la place et 2 pour rechercher avec la plaque: ");
+            string answerSearch = Console.ReadLine();
 
+            if (answerSearch == "1")
+            {
+                Console.Write("Veuillez entrer la place que vous voulez rechercher: ");
+                int searchPlace = int.Parse(Console.ReadLine());
+
+                if (places[searchPlace] == null)
+                {
+                    Console.Write($"Aucune voiture n'a ete trouvee, cette place est vide \n\n");
+                }
+                else
+                {
+                    string test = places[searchPlace].plaque;
+                    Console.Write($"Place N° {searchPlace}\n");
+                    Console.Write($"Plaque: {test}\n\n");
+                }
+            }
+            else if (answerSearch == "2")
+            {
+                Console.Write("Veuillez entrer la plaque pour la voiture que vous voulez rechercher: ");
+                searchPlaque = Console.ReadLine();
+
+                foreach (Voiture matricule in places)
+                {
+                    if (matricule != null && searchPlaque == matricule.plaque)
+                    {
+                        Console.Write($"Place N° {matricule.noPlace}\n");
+                        Console.Write($"Plaque: {searchPlaque}\n\n");
+                        existe = true;
+                    }
+
+                }
+
+                if (!existe)
+                {
+                    Console.Write($"Aucune voiture n'a ete trouvee avec la plaque {searchPlaque} \n\n");
+                }
+            }
         }
 
         public void DayStats()
