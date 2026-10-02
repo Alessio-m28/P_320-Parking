@@ -25,6 +25,8 @@ namespace P_320_Parking
         bool placeOk = false;
         bool isPlaceNbr;
         int choixPlaceSortie;
+        string choixPlaque;
+        bool isOut = false;
         public Voiture[] places { get; set; }
 
         private string _choix;
@@ -223,10 +225,31 @@ namespace P_320_Parking
 
                 places[choixPlaceSortie] = null;
 
+                placeOcc--;
+
             }
             else if(methodeDeSortie == "2")
             {
-                //sortie avec la plaque
+                Console.Write("Veullez choisir une plaque de vehicule a sortir (format: LL-CCCCCC, ecrire en majuscule): ");
+                choixPlaque = Console.ReadLine();
+                
+
+                foreach ( Voiture matricule in places)
+                {
+                    if(matricule != null && choixPlaque == matricule.plaque)
+                    {
+                        places[choixPlace] = null;
+                        placeOcc--;
+                        isOut = true;
+                        Console.Write($"La voiture avec le plaque {choixPlaque} est sortie avec succes \n\n");
+                    }
+                   
+                }
+
+                if (!isOut)
+                {
+                    Console.Write($"Aucune voiture n'a ete trouvee avec la plaque {choixPlaque} \n\n");
+                }
             }
             else
             {
