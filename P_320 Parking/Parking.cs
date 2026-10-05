@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -34,7 +35,12 @@ namespace P_320_Parking
         string answerSearch;
         string searchPlaque;
         string searchChoixPlace;
+        Ticket getTicket;
+
+
         public Voiture[] places { get; set; }
+
+        List<Ticket> ticketList { get; set; }
 
         private string _choix;
         public string Choix
@@ -47,6 +53,7 @@ namespace P_320_Parking
         {
            this.placeTot = place_tot;
            places = new Voiture[placeTot];
+           ticketList = new List<Ticket>();
         }
 
 
@@ -129,7 +136,7 @@ namespace P_320_Parking
 
                     matriculeLettreTest = matricule.Length;
 
-                    if (matriculeLettreTest != 2 && isAllLettre)
+                    if (matriculeLettreTest != 2 || isAllLettre)
                     {
                         Console.WriteLine("Plaque invalide");
 
@@ -171,14 +178,12 @@ namespace P_320_Parking
                         {
                             Console.Write("Plaque invalide, la partie des chiffres est trop longue\n\n");
                         }
-
                     }
                     else if (!isAllNbr)
                     {
-                        Console.Write("Plaque invalide, la 2e partie doit uniquement contenir des chiffres.");
+                        Console.Write("Plaque invalide, la 2e partie doit uniquement contenir des chiffres. \n\n");
 
                     }
-
                 }
 
                 Console.WriteLine($"\nVotre matricule est {matricule}.\n\n");
@@ -186,48 +191,54 @@ namespace P_320_Parking
                 
             }
 
-                for (int i = 0; i < places.Length; i++)
+            for (int i = 0; i < places.Length; i++)
+            {
+                if (places[i] == null)
                 {
-                    if (places[i] == null)
-                    {
-                        noPlaceLibre += $"{i}  ";
-                    }
+                    noPlaceLibre += $"{i}  ";
                 }
+            }
 
             while (!placeOk)
             {
 
                 Console.WriteLine($"Les places libres sont les suivantes : {noPlaceLibre}");
 
-                Console.Write($"Veillez choisir la place (de 0 a {placeTot}): ");
+                Console.Write($"Veillez choisir la place (de 0 a {placeTot -1}): ");
                 isPlaceNbr = int.TryParse(Console.ReadLine(), out choixPlace);
 
                 if (!isPlaceNbr)
                 {
-                    Console.Write($"Veuillez entrer un NOMBRE entre 0 a {placeTot}\n\n");
+                    Console.Write($"Veuillez entrer un NOMBRE entre 0 a {placeTot -1}\n\n");
                 }
                 else if (choixPlace > placeTot)
                 {
-                    Console.Write($"Veuillez entrer un nombre ENTRE 0 a {placeTot}\n\n");
+                    Console.Write($"Veuillez entrer un nombre ENTRE 0 a {placeTot -1}\n\n");
 
                 }
                 else
                 {
                     if (places[choixPlace] == null)
                     {
+                        Console.Write("La voiture a bien été ajoutée");
+
                         places[choixPlace] = new Voiture(matricule, choixPlace);
-                        Ticket ticket = new Ticket(matricule, choixPlace);
+
+                        ticketList.Add(new Ticket(matricule, choixPlace));
+
+                        getTicket = ticketList.Find(x => x._plaque == matricule);
+                        getTicket.Afficher();
+                        Console.WriteLine();
 
                         placeOcc++;
                         placeOk = true;
                     }
                     else
                     {
-                        Console.Write("La place est deja occupee, veuillez en choisir une autre.\n\n");
+                        Console.Write("La place est deja occupée, veuillez en choisir une autre.\n\n");
                     }
                 }
             }         
-
         }
 
         public void SortieVoiture()
@@ -247,10 +258,15 @@ namespace P_320_Parking
 
                 placeOcc--;
 
+                Ticket test = ticketList.Find(x => x._place == choixPlace);
+                test.EnregistrerSortie();
+                test.Afficher();
+                Console.Write("\n");
+
             }
             else if(methodeDeSortie == "2")
             {
-                Console.Write("Veullez choisir une plaque de vehicule a sortir (format: LL-CCCCCC, ecrire en majuscule): ");
+                Console.Write("Veullez choisir une plaque de vehicule a sortir (format: LL-CCCCCC, écrire en majuscule): ");
                 choixPlaque = Console.ReadLine();
                 
 
@@ -262,6 +278,10 @@ namespace P_320_Parking
                         placeOcc--;
                         isOut = true;
                         Console.Write($"La voiture avec le plaque {choixPlaque} est sortie avec succes \n\n");
+                        getTicket = ticketList.Find(x => x._plaque == choixPlaque);
+                        getTicket.EnregistrerSortie();
+                        getTicket.Afficher();
+                        Console.Write("\n");
                     }
                    
                 }
@@ -275,9 +295,6 @@ namespace P_320_Parking
             {
                 Console.Write("Veuillez choisir soit 1, soit 2 et pas autre chose\n\n");
             }
-
-            
-
         }
 
         public void ShowStatus()
@@ -308,15 +325,14 @@ namespace P_320_Parking
                 {
                     Console.Write($"[ {i}: {status} ]");
                 }
-                    i++;
 
-                if(i%4 == 0 && i != 0 && i != 20)
+                i++;
+
+                if(i%4 == 0 && i != 0)
                 {
                     Console.Write("\n");
                 }
-
             }
-
         }
 
         public void Search()
@@ -335,10 +351,13 @@ namespace P_320_Parking
                 }
                 else
                 {
-                    Console.Write($"Place N° {searchPlace}\n");
+
 
                     searchChoixPlace = places[searchPlace].plaque;
-                    Console.Write($"Plaque: {searchChoixPlace}\n\n");
+
+                    getTicket = ticketList.Find(x => x._place == searchPlace);
+                    getTicket.Afficher();
+                    Console.WriteLine();
                 }
             }
             else if (answerSearch == "2")
@@ -350,8 +369,10 @@ namespace P_320_Parking
                 {
                     if (matricule != null && searchPlaque == matricule.plaque)
                     {
-                        Console.Write($"Place N° {matricule.noPlace}\n");
-                        Console.Write($"Plaque: {searchPlaque}\n\n");
+
+                        getTicket = ticketList.Find(x => x._plaque == searchPlaque);
+                        getTicket.Afficher();
+                        Console.WriteLine();
                         existe = true;
                     }
 

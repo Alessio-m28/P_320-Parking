@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P_320 Parking", "P_320 Parking.csproj", "{DC639298-B2C4-41CE-A6A7-219A68070BF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "..\UnitTestProject1\UnitTestProject1.csproj", "{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P_320_Parking.Tests", "..\UnitTestProject1\P_320_Parking.Tests.csproj", "{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

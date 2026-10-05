@@ -10,7 +10,7 @@ namespace P_320_Parking
     {
 
         public string _plaque;
-        public int _numeroPlace;
+        public int _place;
         public DateTime _arrivee;
         public DateTime? _sortie;
         public const decimal TARIF_HORAIRE = 30;
@@ -18,7 +18,7 @@ namespace P_320_Parking
         public Ticket(string plaque, int numeroPlace)
         {
             _plaque = plaque;
-            _numeroPlace = numeroPlace;
+            _place = numeroPlace;
             _arrivee = DateTime.Now;
             _sortie = null;
         }
@@ -27,34 +27,6 @@ namespace P_320_Parking
         {
 
             _sortie = DateTime.Now;
-
-        }
-
-        public string GetPlaque()
-        {
-
-            return _plaque;
-
-        }
-
-        public int GetNumeroPlace()
-        {
-
-            return _numeroPlace;
-
-        }
-
-        public DateTime GetArrivee()
-        {
-
-            return _arrivee;
-
-        }
-
-        public DateTime? GetSortie()
-        {
-
-            return _sortie;
 
         }
 
@@ -69,7 +41,6 @@ namespace P_320_Parking
             }
 
             return _sortie.Value - _arrivee;
-
         }
 
         public decimal CalculerPrix()
@@ -84,7 +55,6 @@ namespace P_320_Parking
             TimeSpan duree = _sortie.Value - _arrivee;
 
             return (decimal)duree.TotalHours * TARIF_HORAIRE;
-
         }
 
         public void Afficher()
@@ -92,7 +62,7 @@ namespace P_320_Parking
 
             Console.WriteLine("\n--- TICKET DE PARKING ---");
 
-            Console.WriteLine($"Plaque  : {_plaque} \nPlace   : {_numeroPlace} \nArrivée : {_arrivee:dd/MM/yyyy HH:mm:ss}");
+            Console.WriteLine($"Plaque  : {_plaque} \nPlace   : {_place} \nArrivée : {_arrivee:dd/MM/yyyy HH:mm:ss}");
 
             if (_sortie == null)
             {
@@ -109,20 +79,10 @@ namespace P_320_Parking
 
                 decimal prix = CalculerPrix();
 
-                Console.WriteLine($"Sortie  : {_sortie.Value:dd/MM/yyyy HH:mm:ss}");
-
-                Console.WriteLine($"Durée   : {(int)duree.TotalHours}h {duree.Minutes}min");
-
-                Console.WriteLine($"Tarif   : {TARIF_HORAIRE:F2} CHF/heure");
-
-                Console.WriteLine($"À payer : {prix:F2} CHF");
-
+                Console.Write($"\nSortie  : {_sortie.Value:dd/MM/yyyy HH:mm:ss} \nDurée   : {(int)duree.TotalHours}h {duree.Minutes}min \nTarif   : {TARIF_HORAIRE:F2} CHF/heure \nÀ payer : {prix:F2} CHF");
             }
-
         }
-
     }
-
 }
 
 
