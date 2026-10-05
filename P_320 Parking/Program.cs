@@ -13,7 +13,7 @@ namespace P_320_Parking
         static void Main(string[] args)
         {
             bool loop = true;  
-            Parking parking = new Parking(20);
+            Parking parking = new Parking(100);
 
             while (loop)
             {

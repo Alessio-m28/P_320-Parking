@@ -1,0 +1,24 @@
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\P_320 Parking.exe
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\P_320 Parking.pdb
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\P_320 Parking.exe.config
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.AssemblyReference.cache
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CoreCompileInputs.cache
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\obj\Debug\UnitTest.40E657F8.Up2Date
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+D:\ETML\I320 - POO\GitHub\P_320-Parking\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

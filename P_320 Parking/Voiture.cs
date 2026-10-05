@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace P_320_Parking
+﻿namespace P_320_Parking
 {
-    internal class Voiture
+    public class Voiture
     {
         public int noPlace;
         public string plaque;

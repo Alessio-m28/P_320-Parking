@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace P_320_Parking
 {
-    internal class Parking
+    public class Parking
     {
 
         public int placeTot;
@@ -199,16 +199,16 @@ namespace P_320_Parking
 
                 Console.WriteLine($"Les places libres sont les suivantes : {noPlaceLibre}");
 
-                Console.Write("Veillez choisir la place (de 0 a 19): ");
+                Console.Write($"Veillez choisir la place (de 0 a {placeTot}): ");
                 isPlaceNbr = int.TryParse(Console.ReadLine(), out choixPlace);
 
                 if (!isPlaceNbr)
                 {
-                    Console.Write("Veuillez entrer un NOMBRE entre 0 a 19\n\n");
+                    Console.Write($"Veuillez entrer un NOMBRE entre 0 a {placeTot}\n\n");
                 }
-                else if (choixPlace > 19)
+                else if (choixPlace > placeTot)
                 {
-                    Console.Write("Veuillez entrer un nombre ENTRE 0 a 19\n\n");
+                    Console.Write($"Veuillez entrer un nombre ENTRE 0 a {placeTot}\n\n");
 
                 }
                 else
@@ -216,6 +216,7 @@ namespace P_320_Parking
                     if (places[choixPlace] == null)
                     {
                         places[choixPlace] = new Voiture(matricule, choixPlace);
+                        Ticket ticket = new Ticket(matricule, choixPlace);
 
                         placeOcc++;
                         placeOk = true;
@@ -274,6 +275,9 @@ namespace P_320_Parking
             {
                 Console.Write("Veuillez choisir soit 1, soit 2 et pas autre chose\n\n");
             }
+
+            
+
         }
 
         public void ShowStatus()
@@ -295,27 +299,20 @@ namespace P_320_Parking
                 }
 
 
-                if(i == 0)
+                
+                if(i < 10)
                 {
-                    Console.Write($"|| 0{i}: {status} |");
-                }
-                else if(i == 19)
-                {
-                    Console.Write($"| {i}: {status} ||\n\n");
-                }
-                else if(i < 10)
-                {
-                    Console.Write($"| 0{i}: {status} |");
+                    Console.Write($"[ 0{i}: {status} ]");
                 }
                 else
                 {
-                    Console.Write($"| {i}: {status} |");
+                    Console.Write($"[ {i}: {status} ]");
                 }
                     i++;
 
                 if(i%4 == 0 && i != 0 && i != 20)
                 {
-                    Console.Write("|\n|");
+                    Console.Write("\n");
                 }
 
             }

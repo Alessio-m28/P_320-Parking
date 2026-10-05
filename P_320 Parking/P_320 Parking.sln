@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36327.8 d17.14
+VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P_320 Parking", "P_320 Parking.csproj", "{DC639298-B2C4-41CE-A6A7-219A68070BF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "..\UnitTestProject1\UnitTestProject1.csproj", "{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DC639298-B2C4-41CE-A6A7-219A68070BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC639298-B2C4-41CE-A6A7-219A68070BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC639298-B2C4-41CE-A6A7-219A68070BF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3600941D-7BC0-4C43-ACCE-6AA6961A96B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
