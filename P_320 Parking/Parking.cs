@@ -35,6 +35,10 @@ namespace P_320_Parking
         string answerSearch;
         string searchPlaque;
         string searchChoixPlace;
+        int totVoituresEntree;
+        int totVoituresSorties;
+        decimal profit;
+        TimeSpan dureeTot;
         Ticket getTicket;
 
 
@@ -42,12 +46,14 @@ namespace P_320_Parking
 
         List<Ticket> ticketList { get; set; }
 
+
         private string _choix;
         public string Choix
         { 
             get;
             set; 
         }
+
 
         public Parking(int place_tot)
         {
@@ -70,7 +76,8 @@ namespace P_320_Parking
 
             Choix = Console.ReadLine();
 
-            Console.Clear();
+            Console.Write("\x1b[3J");
+            Console.Clear();    
 
             switch (Choix)
             {
@@ -118,6 +125,7 @@ namespace P_320_Parking
             lettreOk = false ;
             chiffreOk = false ;
             placeOk = false;
+            noPlaceLibre = "";
 
             while (!plaqueOk)
             {
@@ -197,6 +205,10 @@ namespace P_320_Parking
                 {
                     noPlaceLibre += $"{i}  ";
                 }
+                else
+                {
+
+                }
             }
 
             while (!placeOk)
@@ -225,11 +237,13 @@ namespace P_320_Parking
                         places[choixPlace] = new Voiture(matricule, choixPlace);
 
                         ticketList.Add(new Ticket(matricule, choixPlace));
+                        
 
                         getTicket = ticketList.Find(x => x._plaque == matricule);
                         getTicket.Afficher();
                         Console.WriteLine();
 
+                        totVoituresEntree++;
                         placeOcc++;
                         placeOk = true;
                     }
@@ -257,8 +271,10 @@ namespace P_320_Parking
                 places[choixPlaceSortie] = null;
 
                 placeOcc--;
+                totVoituresSorties++;
 
-                Ticket test = ticketList.Find(x => x._place == choixPlace);
+                Ticket test = ticketList.Find(x => x._place == choixPlaceSortie);
+                
                 test.EnregistrerSortie();
                 test.Afficher();
                 Console.Write("\n");
@@ -282,6 +298,9 @@ namespace P_320_Parking
                         getTicket.EnregistrerSortie();
                         getTicket.Afficher();
                         Console.Write("\n");
+                        totVoituresSorties++;
+                        
+                        
                     }
                    
                 }
@@ -332,7 +351,22 @@ namespace P_320_Parking
                 {
                     Console.Write("\n");
                 }
+
+                
             }
+
+            foreach(Ticket ticket in ticketList)
+            {
+
+                if(ticket.CalculerPrix() == 0)
+                {
+
+                    ticket.Afficher();
+                    Console.Write("\n");
+                }
+
+            }
+            
         }
 
         public void Search()
@@ -387,12 +421,25 @@ namespace P_320_Parking
 
         public void DayStats()
         {
+            foreach (Ticket ticket in ticketList)
+            {
+                profit += ticket.CalculerPrix();
+                dureeTot += ticket.GetDuree();
+            }
 
+            Console.Write($"Total de voitures entrée: {totVoituresEntree} \nTotal de voitures sorties: {totVoituresSorties} \nProfit du jour: {profit:F2} \nDuree total des voitures dans le parking: {(int)dureeTot.TotalHours}h {dureeTot.Minutes}min {dureeTot.Seconds}s.\n\n");
+
+            profit = 0;
+            dureeTot = TimeSpan.Zero;
         }
 
         public  void Historique()
         {
-
+            foreach(Ticket ticket in ticketList)
+            {
+                ticket.Afficher();
+                Console.Write("\n");
+            }
         }
 
         public void Exit()
