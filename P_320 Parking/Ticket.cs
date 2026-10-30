@@ -71,7 +71,7 @@ namespace P_320_Parking
             if (_sortie == null)
             {
 
-                Console.WriteLine("Sortie  : En cours de stationnement");
+                Console.WriteLine("Sortie  : Indisponible");
 
                 Console.WriteLine("Prix    : Non disponible");
 
@@ -85,6 +85,11 @@ namespace P_320_Parking
 
                 Console.Write($"\nSortie  : {_sortie.Value:dd/MM/yyyy HH:mm:ss} \nDurée   : {(int)duree.TotalHours}h {duree.Minutes}min \nTarif   : {TARIF_HORAIRE:F2} CHF/heure \nÀ payer : {prix:F2} CHF");
             }
+        }
+
+        public void AfficherVoitureParquee()
+        {
+            Console.WriteLine($"Plaque  : {_plaque} \nPlace   : {_place} \nArrivée : {_arrivee:dd/MM/yyyy HH:mm:ss}");
         }
     }
 }

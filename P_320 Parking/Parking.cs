@@ -71,7 +71,7 @@ namespace P_320_Parking
         public void Menu()
         {
 
-            Console.Write("--- MENU PRINCIPAL ---\n1. Entree d'un vehicule\n2. Sortie d'un véhicule \n3. Afficher l'etat du parking\n4. Rechercher un vehicule\n5. Statistiques du jour\n6. Historique des transactions\n0. Quitter\nVotre choix : ");
+            Console.Write("--- MENU PRINCIPAL ---\n1. Entrée d'un véhicule\n2. Sortie d'un véhicule \n3. Afficher l'état du parking\n4. Rechercher un véhicule\n5. Statistiques du jour\n6. Historique des transactions\n0. Quitter\nVotre choix : ");
 
             Choix = Console.ReadLine();
 
@@ -119,7 +119,7 @@ namespace P_320_Parking
         public void EntreeVoiture()
         {
 
-            Console.Write("--- Entree d'un vehicule ---");
+            Console.Write("--- Entrée d'un vehicule ---");
 
             plaqueOk = false ;
             lettreOk = false ;
@@ -133,7 +133,7 @@ namespace P_320_Parking
                 
                 while (!lettreOk)
                 {
-                    Console.Write("\n\nVeuillez entrer votre matricule (Canton, ex: VD): ");
+                    Console.Write("\n\nVeuillez entrer votre matricule:\n Canton (ex: VD): ");
 
                     //Test la partie des lettres de la plaque
                     matricule = Console.ReadLine();
@@ -146,7 +146,7 @@ namespace P_320_Parking
 
                     if (matriculeLettreTest != 2 || isAllLettre)
                     {
-                        Console.WriteLine("Plaque invalide");
+                        Console.Write("Plaque invalide");
 
                     }
                     else
@@ -162,7 +162,7 @@ namespace P_320_Parking
                 while (!chiffreOk)
                 {
 
-                    Console.Write("Veillez entrer votre matricule (chiffre) : ");
+                    Console.Write("chiffres (ex: 123456) : ");
                     matriculeNbrTest = Console.ReadLine();
 
 
@@ -171,7 +171,7 @@ namespace P_320_Parking
 
                     if (matriculeNbrTest == "")
                     {
-                        Console.WriteLine("Plaque invalide");
+                        Console.Write("Plaque invalide");
 
                     }
                     else if (isAllNbr)
@@ -206,10 +206,6 @@ namespace P_320_Parking
                 {
                     noPlaceLibre += $"{i}  ";
                 }
-                else
-                {
-
-                }
             }
 
             //check si les places sont disponibles
@@ -242,7 +238,7 @@ namespace P_320_Parking
                         ticketList.Add(new Ticket(matricule, choixPlace));
                         
 
-                        getTicket = ticketList.Find(x => x._plaque == matricule && x._sortie == null);
+                        getTicket = ticketList.Find(x => x._plaque == matricule && x._sortie == null && x._place == choixPlace);
                         getTicket.Afficher();
                         Console.WriteLine();
 
@@ -278,6 +274,8 @@ namespace P_320_Parking
                 placeOcc--;
                 totVoituresSorties++;
 
+                Console.Write($"La voiture à la place {choixPlaceSortie} est sortie avec succès");
+
                 getTicket = ticketList.Find(x => x._place == choixPlaceSortie);
                 
                 getTicket.EnregistrerSortie();
@@ -298,7 +296,7 @@ namespace P_320_Parking
                         places[choixPlace] = null;
                         placeOcc--;
                         isOut = true;
-                        Console.Write($"La voiture avec le plaque {choixPlaque} est sortie avec succes \n\n");
+                        Console.Write($"La voiture avec la plaque {choixPlaque} est sortie avec succes \n\n");
                         getTicket = ticketList.Find(x => x._plaque == choixPlaque);
                         getTicket.EnregistrerSortie();
                         getTicket.Afficher();
@@ -361,24 +359,27 @@ namespace P_320_Parking
                 
             }
 
+
             foreach(Ticket ticket in ticketList)
             {
 
                 if(ticket.CalculerPrix() == 0)
                 {
-
-                    ticket.Afficher();
-                    Console.Write("\n");
+                    Console.Write("--------------------------\n");
+                    ticket.AfficherVoitureParquee();
                 }
 
             }
+
+            Console.Write("\n");
             
         }
 
         //methode qui sert a chercher la voiture parmi le tableau via la plaque ou la place
         public void Search()
         {
-            Console.Write("Veuillez entrer:\n\n1 pour chercher avec le N° de la place\n2 pour rechercher avec la plaque\nVotre choix: ");
+            Console.Write("--- Recherche d'un véhicule ---\n\n");
+            Console.Write("Veuillez entrer:\n1. pour rechercher avec le N° de la place\n2. pour rechercher avec la plaque\nVotre choix: ");
             answerSearch = Console.ReadLine();
 
             if (answerSearch == "1")
@@ -396,6 +397,8 @@ namespace P_320_Parking
 
                     searchChoixPlace = places[searchPlace].plaque;
 
+                    Console.Write($"Une voiture à la place {searchPlace} a été trouvée");
+
                     getTicket = ticketList.Find(x => x._place == searchPlace);
                     getTicket.Afficher();
                     Console.WriteLine();
@@ -411,6 +414,8 @@ namespace P_320_Parking
                     if (matricule != null && searchPlaque == matricule.plaque)
                     {
 
+                        Console.Write($"Une voiture avec la plaque {searchPlaque} a été trouvée");
+
                         getTicket = ticketList.Find(x => x._plaque == searchPlaque);
                         getTicket.Afficher();
                         Console.WriteLine();
@@ -421,7 +426,7 @@ namespace P_320_Parking
 
                 if (!existe)
                 {
-                    Console.Write($"Aucune voiture n'a ete trouvee avec la plaque {searchPlaque} \n\n");
+                    Console.Write($"Aucune voiture n'a été trouvée avec la plaque {searchPlaque} \n\n");
                 }
             }
         }
@@ -429,6 +434,8 @@ namespace P_320_Parking
         //affiche les statistique du jour
         public void DayStats()
         {
+            Console.Write("--- Statistique du jour ---\n\n");
+
             foreach (Ticket ticket in ticketList)
             {
                 profit += ticket.CalculerPrix();
@@ -444,6 +451,8 @@ namespace P_320_Parking
         //affiche tout les ticket crées pour faire un historique des transactions
         public  void Historique()
         {
+            Console.Write("--- Historique des transactions ---\n\n");
+
             foreach(Ticket ticket in ticketList)
             {
                 ticket.Afficher();
