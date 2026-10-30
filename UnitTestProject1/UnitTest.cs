@@ -15,7 +15,7 @@ namespace P_320_Parking.Tests
         [TestMethod]
         public void Ticket_SansSortie_PrixEstZero()
         {
-            // Arrange
+            // Arrange 
             Ticket ticket = new Ticket("VD-123456", 5);
 
             // Act

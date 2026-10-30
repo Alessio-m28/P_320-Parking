@@ -23,6 +23,7 @@ namespace P_320_Parking
             _sortie = null;
         }
 
+        //enregistre la date et l'heure de la sortie
         public void EnregistrerSortie()
         {
 
@@ -30,6 +31,7 @@ namespace P_320_Parking
 
         }
 
+        //ca calcule le temps que la voiture est restee dans le parking
         public TimeSpan GetDuree()
         {
 
@@ -43,6 +45,7 @@ namespace P_320_Parking
             return _sortie.Value - _arrivee;
         }
 
+        //ca calcule le prix du ticket
         public decimal CalculerPrix()
         {
             if (_sortie == null)
@@ -57,6 +60,7 @@ namespace P_320_Parking
             return (decimal)duree.TotalHours * TARIF_HORAIRE;
         }
 
+        //affiche le ticket
         public void Afficher()
         {
 

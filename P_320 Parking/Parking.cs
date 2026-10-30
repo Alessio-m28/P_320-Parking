@@ -67,7 +67,7 @@ namespace P_320_Parking
 
 
 
-
+        //methode qui affiche le menu principal
         public void Menu()
         {
 
@@ -115,6 +115,7 @@ namespace P_320_Parking
             }
         }
 
+        //methode qui gere l'entrée de voiture et verifie que la plaque ait le bon format
         public void EntreeVoiture()
         {
 
@@ -129,7 +130,7 @@ namespace P_320_Parking
             while (!plaqueOk)
             {
 
-
+                
                 while (!lettreOk)
                 {
                     Console.Write("\n\nVeuillez entrer votre matricule (Canton, ex: VD): ");
@@ -198,6 +199,7 @@ namespace P_320_Parking
                 
             }
 
+            //affiche les places disponibles dans le parking
             for (int i = 0; i < places.Length; i++)
             {
                 if (places[i] == null)
@@ -210,6 +212,7 @@ namespace P_320_Parking
                 }
             }
 
+            //check si les places sont disponibles
             while (!placeOk)
             {
 
@@ -229,6 +232,7 @@ namespace P_320_Parking
                 }
                 else
                 {
+                    //si la place est libre, ajoute la voiture au tableau d'objet
                     if (places[choixPlace] == null)
                     {
                         Console.Write("La voiture a bien été ajoutée");
@@ -254,12 +258,14 @@ namespace P_320_Parking
             }         
         }
 
+        //methode qui gère la sortie des voitures
         public void SortieVoiture()
         {
             isOut = false;
             Console.Write("--- Sortie d'un vehicule ---\n\n");
             Console.Write("Veuillez choisir une methode de sortie:\n\n1: sortie avec le numero de la place\n2: sortie avec la plaque\nVotre choix: ");
 
+            //variable qui sert a choisir le mode de sortie
             string methodeDeSortie = Console.ReadLine();
             if (methodeDeSortie == "1")
             {
@@ -272,10 +278,10 @@ namespace P_320_Parking
                 placeOcc--;
                 totVoituresSorties++;
 
-                Ticket test = ticketList.Find(x => x._place == choixPlaceSortie);
+                getTicket = ticketList.Find(x => x._place == choixPlaceSortie);
                 
-                test.EnregistrerSortie();
-                test.Afficher();
+                getTicket.EnregistrerSortie();
+                getTicket.Afficher();
                 Console.Write("\n");
 
             }
@@ -315,6 +321,7 @@ namespace P_320_Parking
             }
         }
 
+        //methode qui sert a afficher l'etat du parking
         public void ShowStatus()
         {
             Console.Write($"--- ÉTAT DU PARKING --- \nPlaces Totales: {placeTot} \nPlaces occupée: {placeOcc} \nPlace libres: {placeTot - placeOcc} \nTaux d'occupation: {100 * placeOcc / placeTot}% \n\n");
@@ -368,9 +375,10 @@ namespace P_320_Parking
             
         }
 
+        //methode qui sert a chercher la voiture parmi le tableau via la plaque ou la place
         public void Search()
         {
-            Console.Write("Veuillez entrer 1 pour chercher avec le N° de la place et 2 pour rechercher avec la plaque: ");
+            Console.Write("Veuillez entrer:\n\n1 pour chercher avec le N° de la place\n2 pour rechercher avec la plaque\nVotre choix: ");
             answerSearch = Console.ReadLine();
 
             if (answerSearch == "1")
@@ -418,6 +426,7 @@ namespace P_320_Parking
             }
         }
 
+        //affiche les statistique du jour
         public void DayStats()
         {
             foreach (Ticket ticket in ticketList)
@@ -432,6 +441,7 @@ namespace P_320_Parking
             dureeTot = TimeSpan.Zero;
         }
 
+        //affiche tout les ticket crées pour faire un historique des transactions
         public  void Historique()
         {
             foreach(Ticket ticket in ticketList)
@@ -441,6 +451,7 @@ namespace P_320_Parking
             }
         }
 
+        //sert a sortir du programme via le menu
         public void Exit()
         {
             Environment.Exit(0);
