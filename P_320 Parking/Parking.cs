@@ -18,7 +18,6 @@ namespace P_320_Parking
         public int placeTot;
         public int placeOcc;
         public string matricule {  get; private set; }
-        int checkLenght;
         string matriculeNbrTest;
         int matriculeLettreTest;
         int choixPlace;
@@ -223,7 +222,7 @@ namespace P_320_Parking
                 {
                     Console.Write($"Veuillez entrer un NOMBRE entre 0 a {placeTot -1}\n\n");
                 }
-                else if (choixPlace > placeTot)
+                else if (choixPlace >= placeTot)
                 {
                     Console.Write($"Veuillez entrer un nombre ENTRE 0 a {placeTot -1}\n\n");
 
@@ -239,7 +238,7 @@ namespace P_320_Parking
                         ticketList.Add(new Ticket(matricule, choixPlace));
                         
 
-                        getTicket = ticketList.Find(x => x._plaque == matricule);
+                        getTicket = ticketList.Find(x => x._plaque == matricule && x._sortie == null);
                         getTicket.Afficher();
                         Console.WriteLine();
 
