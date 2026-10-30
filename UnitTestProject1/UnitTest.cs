@@ -9,9 +9,9 @@ namespace P_320_Parking.Tests
 {
     [TestClass]
     public class Tests
-    {
+    {    
 
-
+          
         [TestMethod]
         public void Ticket_SansSortie_PrixEstZero()
         {
@@ -20,19 +20,19 @@ namespace P_320_Parking.Tests
 
             // Act
             decimal prix = ticket.CalculerPrix();
-
+              
             // Assert
             Assert.AreEqual(0m, prix);
         }
 
-
+          
         [TestMethod]
         public void Ticket_ApresSortie_DureeEstPositive()
         {
             // Arrange
             Ticket ticket = new Ticket("GE-987654", 10);
 
-            // Act
+            // Act 
             System.Threading.Thread.Sleep(100);
             ticket.EnregistrerSortie();
 
@@ -49,7 +49,7 @@ namespace P_320_Parking.Tests
         {
             // Arrange
             Ticket ticket = new Ticket("VD-123456", 5);
-
+             
             // Act
             ticket.EnregistrerSortie();
 
