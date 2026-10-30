@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|d:\\etml\\i320 - poo\\github\\p_320-parking\\p_320 parking\\parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC639298-B2C4-41CE-A6A7-219A68070BF6}|P_320 Parking.csproj|solutionrelative:parking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -41,8 +41,7 @@
               "RelativeToolTip": "..\\UnitTestProject1\\UnitTest.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAIwBwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-30T08:56:39.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-30T08:56:39.3Z"
             },
             {
               "$type": "Document",
@@ -54,8 +53,7 @@
               "RelativeToolTip": "Ticket.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAIwFsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-05T06:59:50.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-05T06:59:50.222Z"
             },
             {
               "$type": "Document",
@@ -65,7 +63,7 @@
               "RelativeDocumentMoniker": "Parking.cs",
               "ToolTip": "D:\\ETML\\I320 - POO\\GitHub\\P_320-Parking\\P_320 Parking\\Parking.cs",
               "RelativeToolTip": "Parking.cs",
-              "ViewState": "AgIAAGkBAAAAAAAAAAD4v3wBAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAKgBAAAAAAAAAAAUwHwBAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-28T08:24:07.927Z",
               "EditorCaption": ""
